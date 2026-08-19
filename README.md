@@ -1,17 +1,19 @@
 # terraform-aws-ses
 
-Terraform module that provisions SES domain identities, optional DNS verification and DKIM records, and SES notification topics.
+Terraform module that provisions SES domain identities, Easy DKIM CNAME records, and SES notification topics.
+
+For domain identities, Amazon SES v2 verifies Easy DKIM through three CNAME records. This module does not manage the legacy `_amazonses` TXT record.
 
 ## Compatibility
 
-This module requires Terraform 1.6.0 or later and supports AWS provider versions from 5.40.0 up to, but not including, 7.0.0.
+This module requires Terraform 1.7.0 or later and supports AWS provider versions from 5.40.0 up to, but not including, 7.0.0.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.7.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.40.0, < 7.0.0 |
 
 ## Providers
@@ -29,9 +31,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [aws_route53_record.dkim](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
-| [aws_route53_record.ses_verification](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_ses_domain_dkim.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ses_domain_dkim) | resource |
-| [aws_ses_domain_identity_verification.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ses_domain_identity_verification) | resource |
 | [aws_ses_identity_notification_topic.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ses_identity_notification_topic) | resource |
 | [aws_sesv2_email_identity.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sesv2_email_identity) | resource |
 
