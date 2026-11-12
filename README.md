@@ -65,4 +65,20 @@ No modules.
 
 ## Example
 
-See [`examples/complete`](examples/complete).
+See [`examples/complete`](examples/complete). To configure engagement metrics for a
+configuration set, use the `configuration_set` submodule:
+
+```hcl
+module "configuration_set" {
+  source = "ganexcloud/ses/aws//modules/configuration_set"
+  # Pin version to a published release that supports engagement_metrics.
+
+  name               = "example-no-tracking"
+  sending_enabled    = true
+  engagement_metrics = "DISABLED"
+}
+```
+
+`engagement_metrics` accepts `ENABLED`, `DISABLED`, or `null` (the default).
+When omitted, the module does not configure VDM dashboard options for the set;
+the effective behavior depends on the SES account configuration.

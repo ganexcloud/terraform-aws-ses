@@ -30,6 +30,17 @@ variable "sending_enabled" {
   default     = null
 }
 
+variable "engagement_metrics" {
+  description = "(Optional) VDM engagement metrics collection for the configuration set: ENABLED or DISABLED. Null leaves VDM options unspecified."
+  type        = string
+  default     = null
+
+  validation {
+    condition     = var.engagement_metrics == null ? true : contains(["ENABLED", "DISABLED"], var.engagement_metrics)
+    error_message = "engagement_metrics must be ENABLED, DISABLED, or null."
+  }
+}
+
 # suppression_options
 variable "suppressed_reasons" {
   type        = list(string)
