@@ -15,6 +15,15 @@ resource "aws_sesv2_configuration_set" "this" {
     sending_enabled = var.sending_enabled
   }
 
+  dynamic "vdm_options" {
+    for_each = var.engagement_metrics == null ? [] : [var.engagement_metrics]
+    content {
+      dashboard_options {
+        engagement_metrics = vdm_options.value
+      }
+    }
+  }
+
   dynamic "suppression_options" {
     for_each = length(var.suppressed_reasons) > 0 ? [1] : []
     content {

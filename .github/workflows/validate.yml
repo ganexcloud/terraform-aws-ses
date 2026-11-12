@@ -37,4 +37,6 @@ jobs:
             terraform -chdir="$module" init -backend=false
             terraform -chdir="$module" validate
           done
+          terraform test
+          terraform -chdir=modules/configuration_set test
           pre-commit run --all-files

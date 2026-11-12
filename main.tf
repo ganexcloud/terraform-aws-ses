@@ -28,6 +28,6 @@ resource "aws_ses_identity_notification_topic" "this" {
   count                    = var.enable_notifications ? length(var.notifications_type) : 0
   topic_arn                = var.notifications_sns_topic_arn
   notification_type        = var.notifications_type[count.index]
-  identity                 = var.domain_name
+  identity                 = aws_sesv2_email_identity.main.email_identity
   include_original_headers = var.notifications_include_original_headers
 }
