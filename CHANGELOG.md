@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0](https://github.com/ganexcloud/terraform-aws-ses/compare/v1.1.0...v1.2.0) (2026-11-12)
+
+### Features
+
+* **ses:** add engagement metrics option ([#4](https://github.com/ganexcloud/terraform-aws-ses/issues/4)) ([71cfb85](https://github.com/ganexcloud/terraform-aws-ses/commit/71cfb8531bf9f891064ec38abbd2ea5d822527c4))
+
 ## [1.1.0](https://github.com/ganexcloud/terraform-aws-ses/compare/v1.0.1...v1.1.0) (2026-09-28)
 
 ### Features
